@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <form [formGroup]="form">
+    <div class="full-size header">
+      <h3>Add User</h3>
+      <button (click)="closeEvent.emit()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <mat-form-field class="full-size" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input formControlName="firstName" matInput>
+    </mat-form-field>
+    <mat-form-field class="full-size" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="lastName" matInput>
+    </mat-form-field>
+
+    <div class="full-size">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="email" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="locked">
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    <div class="full-size"> 
+      <mat-chip-grid #chipGrid aria-label="Enter fruits">
+        <mat-chip-row *ngFor="let role of form.value.roles; let i = index"
+                      (removed)="removeRole(i)">
+          {{role}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+    </div>
+    <div class="full-size">
+      <mat-form-field appearance="fill">
+        <mat-label>Roles</mat-label>
+        <input
+              type="text"
+               placeholder="Pick one or More"
+               aria-label="Roles"
+               matInput
+               [formControl]="roleAutocomplete"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredRoles$ | async" [value]="option.code" (click)="addRole(option.code, $event)">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="full-size">
+      <button (click)="onSubmit()" [disabled]="!form.valid" mat-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</div>

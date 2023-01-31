@@ -1,0 +1,16 @@
+.wrapper{
+    padding: 30px;
+    width: 100%;
+}
+
+.full-size{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center
+}
+
+.header{
+    margin-bottom: 30px
+}

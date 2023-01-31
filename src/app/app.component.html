@@ -1,0 +1,13 @@
+
+<mat-drawer-container class="example-container">
+    <mat-drawer class="sidebar" #sidenav mode="side" position="end" [(opened)]="opened">
+        <app-add-user
+            (closeEvent)="opened = false"
+            (userAddedEvent)="opened = false"
+        ></app-add-user>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header></app-header>
+        <app-user-list (openSide)="opened = true"></app-user-list>
+    </mat-drawer-content>
+  </mat-drawer-container>
