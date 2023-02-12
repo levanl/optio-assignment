@@ -12,6 +12,15 @@ export class TableComponent {
 
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter()
 
+  @Output() editEvent: EventEmitter<UserInfo> = new EventEmitter()
+
+  
+  editForm(id: number){
+    let currentUser = this.dataSource.find((p) => {return p.id === id});
+    this.editEvent.emit(currentUser)
+  }
+
+
   deleteUser(event: any, id: string): void{
     event.stopPropagation();
     event.preventDefault();

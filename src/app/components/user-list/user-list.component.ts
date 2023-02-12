@@ -53,6 +53,10 @@ export class UserListComponent implements OnInit, OnDestroy {
     })
   }
 
+  editUser(user: UserInfo) {
+    this.communicationService.userFormValueUpdate(user);
+  }
+
   openDrawer() {
     this.openSide.emit()
   }

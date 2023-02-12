@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private auth_token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImludGVybnNoaXBAb3B0aW8uYWkiLCJzdWIiOiIzOTg3NjY3MzE3MzQ4OTgzIiwiaWF0IjoxNjczNTI3NzMyLCJleHAiOjE2NzUyNTU3MzJ9.ss2VWdlLDTJYa2rOXfffwnaMJIIeEB7DwkSVsl8xcTjheFu8ATS4eoCtzP5lDYRxQSaG7JXi8FhCRFivMSkSgg'
+  private auth_token = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImludGVybnNoaXBAb3B0aW8uYWkiLCJzdWIiOiIzOTg3NjY3MzE3MzQ4OTgzIiwiaWF0IjoxNjc1MjU2NDQyLCJleHAiOjE2NzY5ODQ0NDJ9.niZvoV5BqTQs_82jp1GHorJbCg9hfCXP_d86xaTy8A116DPRtHJiV1dwMWzpXCzh_F-lGpq2Y8Yuq1r45V0jkg'
   private baseUrl = 'https://development.api.optio.ai/api/v2/';
 
   constructor(
