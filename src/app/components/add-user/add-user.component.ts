@@ -22,6 +22,7 @@ export class AddUserComponent implements OnInit {
     email: new FormControl(undefined, [Validators.required, Validators.email]),
     locked: new FormControl({ value: true, nonNullable: true }),
     roles: new FormArray([], [Validators.minLength(1)]),
+    id: new FormControl(undefined)
   });
 
   roleAutocomplete = new FormControl();
@@ -31,6 +32,7 @@ export class AddUserComponent implements OnInit {
       startWith(""),
       map((value) => this._filter(value || ""))
     );
+  currentUser: UserInfo | null = null
 
   @Output() userAddedEvent: EventEmitter<void> = new EventEmitter();
   @Output() closeEvent: EventEmitter<void> = new EventEmitter();
@@ -50,7 +52,14 @@ export class AddUserComponent implements OnInit {
 
     this.communicationService
       .listenForUserFormValue()
-      .subscribe(console.log)
+      .subscribe((userInfo: any) => {
+        this.currentUser = userInfo;
+        if(userInfo) {
+          this.form.patchValue(userInfo)
+        } else {
+          this.form.reset();
+        }
+      })
   }
 
   private _filter(value: string): RoleOption[] {

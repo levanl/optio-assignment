@@ -1,7 +1,7 @@
 <div class="wrapper">
   <form [formGroup]="form">
     <div class="full-size header">
-      <h3>Add User</h3>
+      <h3>{{currentUser ? 'Edit User - ' + currentUser.firstName : 'Add User'}}</h3>
       <button (click)="closeEvent.emit()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>close</mat-icon>
       </button>
